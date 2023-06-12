@@ -30,11 +30,16 @@ form.addEventListener('input', saveFormState);
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   localStorage.removeItem(STORAGE_KEY);
-  emailInput.value = '';
-  messageInput.value = '';
+  
+
+  if (!emailInput.value || !messageInput.value) { alert("Заповніть всі поля"); return }
+  
   console.log('Form submitted:', {
     email: emailInput.value,
     message: messageInput.value,
   });
+  emailInput.value = '';
+  messageInput.value = '';
 });
+
 
